@@ -2,7 +2,7 @@
 
 @section("body")
 
-<div class="flex-row flex-center">
+<div class="">
 
 	<form action="/action_page.php">
 	  <label for="email">Email:</label>

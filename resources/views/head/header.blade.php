@@ -4,7 +4,7 @@
 
     <title>VOCA</title>
 
-		<link rel="stylesheet" href="/resources/css/core.css">
+		<link rel="stylesheet" href="{{ asset('css/app.css')  }}">
 
 	 	@if (Route::has('web.welcome.show'))
 	    <!-- Fonts -->
