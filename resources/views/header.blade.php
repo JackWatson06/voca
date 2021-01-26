@@ -4,6 +4,8 @@
 
     <title>VOCA</title>
 
+		<link rel="stylesheet" href="/resources/css/core.css">
+
 	 	@if (Route::has('web.welcome.show'))
 	    <!-- Fonts -->
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
