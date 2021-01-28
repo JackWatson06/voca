@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-		@include('header')
+		@include('head/header')
 
     <body class="antialiased">
 			@yield('body')

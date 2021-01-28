@@ -6,7 +6,7 @@
 
 		<link rel="stylesheet" href="{{ asset('css/app.css')  }}">
 
-	 	@if (Route::has('web.welcome.show'))
+	 	@if (Route::current()->getName() == 'web.welcome.show')
 	    <!-- Fonts -->
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
