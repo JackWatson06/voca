@@ -1,4 +1,38 @@
+/*
+|--------------------------------------------------------------------------
+| Global Rules
+|--------------------------------------------------------------------------
+|
+| These CSS selectors apply to every HTML page.
+|
+ */
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Component Rules
+|--------------------------------------------------------------------------
+|
+| These CSS selectors are for blade components.
+|
+ */
+
+
+/* resource-table.blade */
+.table-resource .row-clickable:hover{
+
+	cursor: pointer;
+
 }
