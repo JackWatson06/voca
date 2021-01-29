@@ -1,7 +1,6 @@
 $(window).on('load', function() {
 
-	$(".resource-table .row-clickable").click(function(e) {
-		console.log("TEsting");
+	$(".table-resource .row-clickable").click(function(e) {
 	  window.location = $(e.target).data('href');
 	});
 
