@@ -28,12 +28,39 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 VOCA API Design
 
-api-key as the header
+OAuth2 using passport
 
 
+/users  GET  api.users.index
+/users  POST api.user.store
+/users/{id} GET api.users.show
+/users/{id} PATCH api.users.update
+/users/{id} DELETE api.users.delete
+/users/{id}/documents GET api.users.documents.index
+/users/{id}/documents POST api.users.documents.store
 
 
+/companies  GET  api.companies.index
+/companies  POST api.user.store
+/companies/{id} GET api.companies.show
+/companies/{id} PATCH api.companies.update
+/companies/{id} DELETE api.companies.delete
+/companies/{id}/documents GET api.companies.documents.index
+/companies/{id}/documents POST api.companies.documents.store
 
+/documents/{id} GET api.documents.show
+/documents/{id} PATCH api.documents.update
+/documents/{id} DELETE api.documents.delete
+
+
+/tasks GET api.tasks.index
+/tasks POST api.tasks.store
+/tasks/{id} GET api.tasks.show
+/tasks/{id} PATCH api.tasks.update
+/tasks/{id} DELETE api.tasks.delete
+/tasks/{id}/task-users GET api.tasks.users.index
+/tasks/{id}/task-users POST api.tasks.users.store
+/tasks/{id}/task-users/{id} DELET api.tasks.users.store
 
 
  */

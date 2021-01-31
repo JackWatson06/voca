@@ -7,3 +7,7 @@ RUN set -ex \
 RUN docker-php-ext-install pdo pgsql pdo_pgsql
 
 RUN chown -R www-data:www-data ./
+
+RUN find ./ -type f -exec chmod 644 {} \;
+
+RUN find ./ -type d -exec chmod 755 {} \;

@@ -3,6 +3,23 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
+
+
+/*
+|--------------------------------------------------------------------------
+| Redirect Routes
+|--------------------------------------------------------------------------
+|
+| These routes redirect the user to a different page.
+|
+ */
+
+Route::get('', function () {
+    return redirect()->route('web.welcome.show');
+});
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +32,17 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('web.welcome.show');
 
+Route::view('/welcome', 'pages/welcome')->name('web.welcome.show');
 
 Route::get('/login', [LoginController::class, 'create'])->name('web.login.create');
 Route::post('/login', [LoginController::class, 'store'])->name('web.login.store');
+Route::get('/logout', [LoginController::class, 'destroy'])->name('web.login.destroy');
+
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/users', [UsersController::class, 'index'])->name('web.users.index');
+    Route::get('/users/{id}', [UsersController::class, 'show'])->name('web.users.show');
+
+});
