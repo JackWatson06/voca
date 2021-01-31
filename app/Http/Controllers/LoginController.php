@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -16,6 +17,7 @@ class LoginController extends Controller
 	 * @return View           Blade view
 	 */
 	public function create(Request $request){
+
 		return view('pages/login');
 	}
 
@@ -32,7 +34,7 @@ class LoginController extends Controller
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
 
-        return redirect()->intended('web.users.index');
+        return redirect()->route('web.users.index');
     }
 
     return back()->with('status', 'Email, or password inputed does not match our records.');
