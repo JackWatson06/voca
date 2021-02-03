@@ -16,7 +16,6 @@ class CreateConstantApis extends Migration
         Schema::create('constant_apis', function (Blueprint $table) {
             $table->id();
 						$table->string('name');
-            $table->timestamps();
         });
     }
 

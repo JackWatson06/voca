@@ -16,7 +16,6 @@ class CreateConstantResources extends Migration
         Schema::create('constant_resources', function (Blueprint $table) {
             $table->id();
 						$table->string('name');
-            $table->timestamps();
         });
     }
 
