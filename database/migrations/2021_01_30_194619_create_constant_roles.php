@@ -15,7 +15,7 @@ class CreateConstantRoles extends Migration
     {
         Schema::create('constant_roles', function (Blueprint $table) {
             $table->id();
-						$table->string('name');
+			$table->string('name');
         });
     }
 

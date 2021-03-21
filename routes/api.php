@@ -16,14 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->prefix('api')->name('api.')->group(function () {
 
+
+	// USER Routes
 	Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 	Route::post('/users', [UsersController::class, 'store'])->name('users.store');
 	Route::get('/users/{id}', [UsersController::class, 'show'])->name('users.show');
 	Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users.update');
 	Route::delete('/users/{id}', [UsersController::class, 'delete'])->name('users.delete');
 
-	Route::patch('/users/{id}/documents', [UserDocumentsController::class, 'index'])->name('users.documents.index');
-	Route::patch('/users/{id}/documents', [UserDocumentsController::class, 'store'])->name('users.documents.store');
+	Route::get('/users/{id}/documents', [UserDocumentsController::class, 'index'])->name('users.documents.index');
+	Route::post('/users/{id}/documents', [UserDocumentsController::class, 'store'])->name('users.documents.store');
+
+
+
+
+
 
 
 
