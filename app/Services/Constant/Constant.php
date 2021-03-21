@@ -36,7 +36,7 @@ class Constant
 			$tables = config('constant.tables');
 
 			foreach($tables as $table){
-				$this->extractConstantsFromTable('constant_' . $table);
+				$this->extractConstantsFromTable($table);
 			}
 
 			return true;
@@ -64,12 +64,11 @@ class Constant
 		 * @return void
 		 */
 		private function extractConstantsFromTable(string $table){
-			$constants = DB::table($table)->get()->toArray();
+			// $constants = DB::table($table)->get()->toArray();
 
-			foreach($constants as $constant){
-				$this->constants[$constant->name] = $constant->id;
-			}
-
+			// foreach($constants as $constant){
+			// 	$this->constants[$constant->name] = $constant->id;
+			// }
 		}
 
 

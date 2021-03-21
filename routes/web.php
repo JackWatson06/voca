@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\UsersController;
 
 
 /*
@@ -35,7 +35,7 @@ Route::get('', function () {
 
 Route::view('/welcome', 'pages/welcome')->name('web.welcome.show');
 
-Route::get('/login', [LoginController::class, 'create'])->name('web.login.create');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('web.login.store');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('web.login.destroy');
 

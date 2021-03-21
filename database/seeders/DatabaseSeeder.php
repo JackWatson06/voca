@@ -14,18 +14,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
   		User::firstOrCreate(
-          ['email' => 'j.watson@americanlaborcompany.com'], [
-              'name' => "jack",
-              'password' => bcrypt("JWatson_06"),
+          [ 'email' => 'j.watson@americanlaborcompany.com'],
+          [
+              'fname' => "jack",
+              'lname' => "watson",
+              'phone' => "7167718154",
+              'trade' => "Electrician",
+              'role_id' => 1,
+              'password' => bcrypt("JWatson_06")
           ]
       );
 
   		User::firstOrCreate(
-          ['email' => 'm.mathew@americanlaborcompany.com'], [
-              'name' => "matt",
-              'password' => bcrypt("MMorgan_07"),
+          ['email' => 'm.mathew@americanlaborcompany.com'], 
+          [
+              'fname' => "matt",
+              'lname' => "watson",
+              'phone' => "7167718154",
+              'trade' => "Plumber",
+              'role_id' => 1,
+              'password' => bcrypt("MMorgan_07")
           ]
       );
     }
