@@ -14,7 +14,7 @@ class UsersEndpointTest extends TestCase
      *
      * @return void
      */
-    public function test_create_a_user()
+    public function test_user_create_with_valid_inputs()
     {
         $response = $this->post('/users', [
             'title' => 'This is a test post.',
@@ -23,4 +23,56 @@ class UsersEndpointTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+
+    public function test_user_create_with_invalid_inputs()
+    {
+        $response = $this->post('/users', [
+            'title' => 'This is a test post.',
+            'body' => 'Some lorem ipsum text.'
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+
+    public function test_user_create_with_duplicate_inputs()
+    {
+        $response = $this->post('/users', [
+            'title' => 'This is a test post.',
+            'body' => 'Some lorem ipsum text.'
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+
+    public function test_users_get()
+    {
+
+    }
+
+    public function test_user_get()
+    {
+
+    }
+
+    public function test_user_edit_with_valid_inputs()
+    {
+
+    }
+
+    public function test_user_edit_with_invalid_inputs()
+    {
+
+    }
+
+
+    public function test_user_delete()
+    {
+
+    }
+
+
+
 }

@@ -161,11 +161,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Laravel\Passport\PassportServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
-				Onecentlin\Adminer\ServiceProvider::class,
+        Onecentlin\Adminer\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,11 +178,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-				/*
-				 * Custom Service Providers...
-				 */
+        /*
+            * Custom Service Providers...
+            */
 
-				App\Providers\ConstantServiceProvider::class,
+        App\Providers\ConstantServiceProvider::class,
 
     ],
 
