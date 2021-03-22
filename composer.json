@@ -16,7 +16,8 @@
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "onecentlin/laravel-adminer": "^5.2"
+        "onecentlin/laravel-adminer": "^5.2",
+        "tightenco/tlint": "^5.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -51,6 +52,16 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "test" : [
+            "./vendor/bin/tlint",
+            "php ./vendor/bin/phpunit"
+        ],
+        "refresh-database" : [
+            "php artisan migrate:rollback",
+            "php artisan migrate",
+            "php artisan db:seed --class=ConstantSeeder",
+            "php artisan db:seed"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
               'fname' => "jack",
               'lname' => "watson",
               'phone' => "7167718154",
-              'trade' => "Electrician",
+              'trade' => "None",
               'role_id' => 1,
               'password' => bcrypt("JWatson_06")
           ]
-      );
+        );
 
   		User::firstOrCreate(
           ['email' => 'm.mathew@americanlaborcompany.com'], 
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
               'fname' => "matt",
               'lname' => "watson",
               'phone' => "7167718154",
-              'trade' => "Plumber",
+              'trade' => "None",
               'role_id' => 1,
               'password' => bcrypt("MMorgan_07")
           ]

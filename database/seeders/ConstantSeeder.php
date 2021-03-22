@@ -16,22 +16,26 @@ class ConstantSeeder extends Seeder
     {
 
       DB::table('roles')->insert([
-			    ['name' => 'EMPLOYEE'],
-				  ['name' => 'EMPLOYER']
+        ['name' => 'ADMIN'],
+        ['name' => 'EMPLOYEE'],
+        ['name' => 'EMPLOYER']
 			]);
-
 
       DB::table('apis')->insert([
-			    ['name' => 'ENGAGEBAY'],
-				  ['name' => 'GOOGLECAL']
+        ['name' => 'ENGAGEBAY'],
+        ['name' => 'GOOGLECAL']
 			]);
 
-
       DB::table('resources')->insert([
-			    ['name' => 'USERS'],
-				  ['name' => 'COMPANIES'],
-				  ['name' => 'EMPLOYEES'],
-				  ['name' => 'EMPLOYEE_STATUSES']
+        ['name' => 'USERS'],
+        ['name' => 'COMPANIES'],
+        ['name' => 'EMPLOYEES'],
+        ['name' => 'DOCUMENTS']
+      ]);
+      
+      DB::table('uses')->insert([
+        ['name' => 'RESUME'],
+        ['name' => 'PORTRAIT'] // Image of the use
 			]);
 
     }
