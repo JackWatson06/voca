@@ -33,7 +33,7 @@ class ConstantSeeder extends Seeder
         ['name' => 'DOCUMENTS']
       ]);
       
-      DB::table('uses')->insert([
+      DB::table('document_usages')->insert([
         ['name' => 'RESUME'],
         ['name' => 'PORTRAIT'] // Image of the use
 			]);

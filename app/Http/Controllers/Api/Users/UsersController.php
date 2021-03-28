@@ -27,13 +27,23 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'fname' => 'required|unique:users|max:255',
-            'lname' => 'required|unique:users|max:255',
-            'email' => 'required|unique:users|max:255',
-            'phone' => 'required|unique:users|max:255',
-            'trade' => 'required|unique:users|max:255',
-            'password' => 'required|unique:users|max:255'
+            'name'     => 'required|max:255',
+            'email'    => 'required|unique:users|max:255',
+            'phone'    => 'required|max:50',
+            'trade'    => 'nullable|max:255',
+            'info'     => 'nullable',
+            'role_id'  => 'required|exists:roles,id',
+            'password' => 'nullable'
         ]);
+
+        $validated['password'] = bcrypt($validated['password'] ?? $this->generateRandomPassword(20)); 
+
+        $user = User::firstOrCreate(
+            ['email' => $validated['email']],
+            $validated
+        );
+
+        return $user;
     }
 
     /**
@@ -44,7 +54,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::findOrFail($id);
     }
 
     /**
@@ -68,5 +78,13 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+
+    private function generateRandomPassword(int $length)
+    { 
+        return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$'), 1, $length);
     }
 }

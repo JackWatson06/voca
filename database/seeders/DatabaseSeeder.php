@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
   		User::firstOrCreate(
           [ 'email' => 'j.watson@americanlaborcompany.com'],
           [
-              'fname' => "jack",
-              'lname' => "watson",
+              'name' => "Jack Watson",
               'phone' => "7167718154",
               'trade' => "None",
               'role_id' => 1,
@@ -29,8 +28,7 @@ class DatabaseSeeder extends Seeder
   		User::firstOrCreate(
           ['email' => 'm.mathew@americanlaborcompany.com'], 
           [
-              'fname' => "matt",
-              'lname' => "watson",
+              'name' => "Mathew Morgan",
               'phone' => "7167718154",
               'trade' => "None",
               'role_id' => 1,

@@ -20,7 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('industry', 255);
             $table->integer('size')->nullable();
             $table->text('info')->nullable();
-            $table->binary('active')->default(true);
+            $table->boolean('active')->default(true);
 
             $table->timestamps();
         });

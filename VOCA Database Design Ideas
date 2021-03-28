@@ -1,0 +1,22 @@
+
+VOCA = Database / Web app to manage employers, and employees (later the web app)
+
+Employees = People who are searching for employment
+Employers = People who are working at companies looking for employees
+
+
+
+User Tables = Can have both employees and employers, this means we are going to need a type of user. Both employers, and employees can be connected to a company.
+
+- Maybe we put in a type here which holds the type of user.
+- How do we want to do 
+
+Companies Table = Holds information on the different companies that signed up.
+
+
+
+An employee can have different status which include, unemployed, and employed.
+A company can have different statuss which include, searching for employees, or not seraching for employees.
+
+
+
