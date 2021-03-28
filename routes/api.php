@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Users\UsersController;
 use App\Http\Controllers\Api\Companies\CompaniesController;
 
+use App\Http\Controllers\Api\Users\UsersDocumentsController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,6 +27,7 @@ Route::middleware('client')->name('api.')->group(function () {
 	Route::apiResource('users', UsersController::class);
 	Route::apiResource('companies', CompaniesController::class);
 	Route::apiResource('employees', EmployeesController::class);
+	Route::apiResource('documents', DocumentsController::class);
 	
 });
 

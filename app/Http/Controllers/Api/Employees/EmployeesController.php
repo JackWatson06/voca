@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Users;
+namespace App\Http\Controllers\Api\Employees;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserDocumentsController extends Controller
+class EmployeesController extends Controller
 {
-    
-    /**
+       /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,13 +24,6 @@ class UserDocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'resume' => 'required|mimes:csv,txt,xlx,xls,pdf|max:10240',
-        ]);
-
-        
-        
-
         
     }
 
@@ -68,5 +60,4 @@ class UserDocumentsController extends Controller
     {
         //
     }
-
 }
