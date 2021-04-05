@@ -3,16 +3,13 @@
 class ThirdPartyService
 {
 
-		public function __construct() {
+	public function __construct() {
         echo dd("Testing");
     }
 
 
-		public function api(){
+	public function api(){
 
-
-		}
-
-
+	}
 
 }

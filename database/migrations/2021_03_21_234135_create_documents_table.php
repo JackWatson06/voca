@@ -16,11 +16,12 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
-            $table->foreignId('company_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('company_id')->nullable()->constrained()->onUpdate('restrict')->onDelete('restrict');
 
             $table->string('name', 255);
-            $table->string('hash_name', 255);
+            $table->string('hash_name', 255)->unique();
+            $table->string('type', 10);
             $table->foreignId('document_usage_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
 
             $table->timestamps();

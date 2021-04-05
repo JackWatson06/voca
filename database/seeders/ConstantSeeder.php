@@ -35,7 +35,7 @@ class ConstantSeeder extends Seeder
       
       DB::table('document_usages')->insert([
         ['name' => 'RESUME'],
-        ['name' => 'PORTRAIT'] // Image of the use
+        ['name' => 'PORTRAIT'] // Image of the user
 			]);
 
     }

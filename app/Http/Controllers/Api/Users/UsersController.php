@@ -4,10 +4,30 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+
+use App\Facades\Constant;
+
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+    // /**
+    //  * Service to interact with third party code
+    //  *
+    //  * @var ThirdPartyService
+    //  */
+    // private ThirdPartyService $thirdParty;
+
+    
+    // public function __construct(ThirdPartyService $thirdParty)
+    // {
+    //     $this->thirdParty = $thirdParty;
+    //     $thirdParty->setActiveApi(ThirdParty::ENGAGEBAY);
+    // }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +48,7 @@ class UsersController extends Controller
     {
         $validated = $request->validate([
             'name'     => 'required|max:255',
-            'email'    => 'required|unique:users|max:255',
+            'email'    => 'required|max:255',
             'phone'    => 'required|max:50',
             'trade'    => 'nullable|max:255',
             'info'     => 'nullable',
@@ -42,6 +62,11 @@ class UsersController extends Controller
             ['email' => $validated['email']],
             $validated
         );
+
+
+
+        // $thirdParty->new(Constant::get("USERS"), $user->id);
+        // $thirdParty->update(Constant::get("USERS"), $user->id);
 
         return $user;
     }
@@ -57,34 +82,10 @@ class UsersController extends Controller
         return User::findOrFail($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-
-
 
     private function generateRandomPassword(int $length)
     { 
         return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$'), 1, $length);
     }
+    
 }

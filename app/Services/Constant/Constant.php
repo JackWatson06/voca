@@ -25,7 +25,7 @@ class Constant
 
 		public function __construct() {
 
-    }
+    	}
 
 		/**
 		 * Load the constants inside the table.
@@ -42,6 +42,8 @@ class Constant
 			return true;
 		}
 
+
+		
 		/**
 		 * Get a constant based on the name of the constant.
 		 * TODO refactor to support checks for multiple constants with same name.
@@ -58,17 +60,19 @@ class Constant
 
 		}
 
+
+
 		/**
 		 * This function takes in data that is returned from a table, and pushes them
 		 * to the constants array.
 		 * @return void
 		 */
 		private function extractConstantsFromTable(string $table){
-			// $constants = DB::table($table)->get()->toArray();
+			$constants = DB::table($table)->get()->toArray();
 
-			// foreach($constants as $constant){
-			// 	$this->constants[$constant->name] = $constant->id;
-			// }
+			foreach($constants as $constant){
+				$this->constants[$constant->name] = $constant->id;
+			}
 		}
 
 

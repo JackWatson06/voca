@@ -19,6 +19,7 @@ class Document extends Model
         'company_id',
         'name',
         'hash_name',
+        'type',
         'document_usage_id',
         'active'
     ];

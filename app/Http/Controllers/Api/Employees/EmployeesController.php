@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Api\Employees;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
 {
-       /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +25,14 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validated = $request->validate([
+            'user_id'     => 'required|exists:users,id',
+            'company_id'    => 'required|exists:companies,id'
+        ]);
+
+        $employee = Employee::firstOrCreate( $validated, $validated );
+
+        return $employee;
     }
 
     /**
