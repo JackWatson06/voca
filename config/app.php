@@ -110,6 +110,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Linked CRM
+    |--------------------------------------------------------------------------
+    |
+    | The CRM listed here controls the CRM we have our application talk to.
+    | We also specify the access-token for the CRM that we are consuming.
+    |
+    */
+
+    'crm' => App\Services\Crm\EngageBayAdapter::class,
+
+    'crm_token' => "6brb4rv1vto4r4den8oath5l11",
+
+    /*
+    |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
@@ -179,10 +193,10 @@ return [
 
 
         /*
-            * Custom Service Providers...
-            */
-
+         * Custom Service Providers...
+         */
         App\Providers\ConstantServiceProvider::class,
+        App\Providers\CrmServiceProvider::class,
 
     ],
 

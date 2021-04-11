@@ -6,26 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 
 use App\Facades\Constant;
-
+use App\Services\Crm\CrmAdapterContract;
 
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
 
-    // /**
-    //  * Service to interact with third party code
-    //  *
-    //  * @var ThirdPartyService
-    //  */
-    // private ThirdPartyService $thirdParty;
-
-    
-    // public function __construct(ThirdPartyService $thirdParty)
-    // {
-    //     $this->thirdParty = $thirdParty;
-    //     $thirdParty->setActiveApi(ThirdParty::ENGAGEBAY);
-    // }
 
 
     /**
@@ -33,7 +20,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CrmAdapterContract $crm)
     {
         return User::all();
     }
@@ -44,7 +31,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, CrmAdapterContract $crm)
     {
         $validated = $request->validate([
             'name'     => 'required|max:255',
@@ -63,10 +50,7 @@ class UsersController extends Controller
             $validated
         );
 
-
-
-        // $thirdParty->new(Constant::get("USERS"), $user->id);
-        // $thirdParty->update(Constant::get("USERS"), $user->id);
+        $user->wasRecentlyCreated ? $crm->createResource($user) : $crm->updateResource($user);
 
         return $user;
     }
