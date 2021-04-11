@@ -15,10 +15,10 @@ class ConstantServiceProvider extends ServiceProvider
      */
     public function register()
     {
-			$this->app->singleton('constant', function()
-			{
-				return new ConstantService;
-			});
+        $this->app->singleton('constant', function()
+        {
+            return new ConstantService;
+        });
     }
 
     /**

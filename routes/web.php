@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\UsersController;
 
 
 /*

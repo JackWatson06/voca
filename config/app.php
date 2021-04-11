@@ -110,6 +110,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Linked CRM
+    |--------------------------------------------------------------------------
+    |
+    | The CRM listed here controls the CRM we have our application talk to.
+    | We also specify the access-token for the CRM that we are consuming.
+    |
+    */
+
+    'crm' => App\Services\Crm\EngageBayAdapter::class,
+
+    'crm_token' => "6brb4rv1vto4r4den8oath5l11",
+
+    /*
+    |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
@@ -161,11 +175,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Laravel\Passport\PassportServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
-				Onecentlin\Adminer\ServiceProvider::class,
+        Onecentlin\Adminer\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,11 +192,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-				/*
-				 * Custom Service Providers...
-				 */
-
-				App\Providers\ConstantServiceProvider::class,
+        /*
+         * Custom Service Providers...
+         */
+        App\Providers\ConstantServiceProvider::class,
+        App\Providers\CrmServiceProvider::class,
 
     ],
 

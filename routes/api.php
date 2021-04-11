@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\Users\UsersController;
+use App\Http\Controllers\Api\Companies\CompaniesController;
+use App\Http\Controllers\Api\Documents\DocumentsController;
+use App\Http\Controllers\Api\Employees\EmployeesController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,26 +20,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->prefix('api')->name('api.')->group(function () {
 
-	Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-	Route::post('/users', [UsersController::class, 'store'])->name('users.store');
-	Route::get('/users/{id}', [UsersController::class, 'show'])->name('users.show');
-	Route::patch('/users/{id}', [UsersController::class, 'update'])->name('users.update');
-	Route::delete('/users/{id}', [UsersController::class, 'delete'])->name('users.delete');
-
-	Route::patch('/users/{id}/documents', [UserDocumentsController::class, 'index'])->name('users.documents.index');
-	Route::patch('/users/{id}/documents', [UserDocumentsController::class, 'store'])->name('users.documents.store');
+Route::middleware('client')->name('api.')->group(function () {
 
 
-
-
-
-
-
-
+	Route::apiResource('users', 		  UsersController::class);
+	Route::apiResource('companies', 	  CompaniesController::class);
+	Route::apiResource('employees', 	  EmployeesController::class);
+	Route::apiResource('documents', 	  DocumentsController::class);
+	Route::apiResource('documents.files', DocumentsFilesController::class)->only([ 'show' ]);
+	
 });
-
 
 
 

@@ -2,10 +2,11 @@
 
 return [
 
-		'tables' => [
-				'roles',
-				'resources',
-				'apis'
-		],
+	'tables' => [
+			'roles',
+			'resources',
+			'apis',
+			'document_usages'
+	],
 
 ];
