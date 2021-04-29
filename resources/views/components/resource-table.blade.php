@@ -2,7 +2,7 @@
 
 <x-table class="table-resource">
 		<x-slot name="headers">
-      @foreach($headers as $header)
+      		@foreach($headers as $header)
 				<th scope="col">{{ $header }}</th>
 			@endforeach
     </x-slot>

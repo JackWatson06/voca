@@ -197,6 +197,7 @@ return [
          */
         App\Providers\ConstantServiceProvider::class,
         App\Providers\CrmServiceProvider::class,
+        App\Providers\DataLoaderServiceProvider::class,
 
     ],
 

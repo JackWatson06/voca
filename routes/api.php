@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\Users\UsersController;
+use App\Http\Controllers\Api\Users\{UsersController, WorkerController, EmployerController};
 use App\Http\Controllers\Api\Companies\CompaniesController;
 use App\Http\Controllers\Api\Documents\DocumentsController;
 use App\Http\Controllers\Api\Employees\EmployeesController;
@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\Employees\EmployeesController;
 |
 */
 
+Route::apiResource('worker', 	WorkerController::class,   ['except' => ["index", "show", "edit", "delete"]]);
+Route::apiResource('employer',  EmployerController::class, ['except' => ["index", "show", "edit", "delete"]]);
 
 Route::middleware('client')->name('api.')->group(function () {
 
@@ -31,8 +33,6 @@ Route::middleware('client')->name('api.')->group(function () {
 	Route::apiResource('documents.files', DocumentsFilesController::class)->only([ 'show' ]);
 	
 });
-
-
 
 
 
