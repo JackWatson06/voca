@@ -31,9 +31,4 @@ class CreateDocumentValidator extends Validator
         ];
     }
 
-    // protected function getPrefix() : string
-    // {
-    //     return "document";
-    // }
-
 }

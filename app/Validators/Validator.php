@@ -50,7 +50,7 @@ abstract class Validator
 
         if (!$validator->validate())
             throw new InvalidArgumentException(
-                'Error: ' . $validator->errors()->first()
+                'Error: ' . $this->errors
             );
 
         $this->data = $validator->valid();

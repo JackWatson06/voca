@@ -25,11 +25,6 @@ class CreateUserValidator extends Validator
             ];
     }
 
-    // protected function getPrefix() : string
-    // {
-    //     return "user";
-    // }
-
     private function generateRandomPassword(int $length)
     { 
         return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$'), 1, $length);
