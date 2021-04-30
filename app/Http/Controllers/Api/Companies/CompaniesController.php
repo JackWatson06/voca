@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Companies;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use Illuminate\Http\Request;
+
+use App\Actions\User\{CreateCompany};
 
 class CompaniesController extends Controller
 {
@@ -14,10 +14,10 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Company::all();
-    }
+    // public function index(ReadCompanies $action)
+    // {
+    //     return $action->execute();
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -25,21 +25,9 @@ class CompaniesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCompany $action)
     {
-        $validated = $request->validate([
-            'name'     => 'required|max:255',
-            'industry' => 'required|max:255',
-            'size'     => 'nullable|numeric',
-            'info'     => 'nullable'
-        ]);
-
-        $company = Company::firstOrCreate(
-            ['name' => $validated['name']],
-            $validated
-        );
-
-        return $company;
+        return $action->execute();
     }
 
     /**
@@ -48,9 +36,9 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return Company::findOrFail($id);
-    }
+    // public function show(int $id, ReadCompany $action)
+    // {
+    //     return $action->execute($id);
+    // }
 
 }

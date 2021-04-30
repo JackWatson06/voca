@@ -2,14 +2,10 @@
 
 namespace App\Actions\User;
 
-use Illuminate\Support\Facades\Mail;
-use App\Facades\Constant;
-
 use App\Actions\Executable;
 use App\Validators\User\CreateUserValidator;
 
 use App\Models\User;
-use App\Mail\UserSignUp;
 
 class CreateUser implements Executable
 {

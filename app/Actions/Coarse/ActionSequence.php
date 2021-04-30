@@ -35,6 +35,8 @@ class ActionSequence implements Executable
         }
 
         $this->app->bind(DataLoader::class, $dataBindInitialState);
+
+        return $this->resolvedSteps;
     }
 
 

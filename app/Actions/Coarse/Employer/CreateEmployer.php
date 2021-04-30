@@ -2,29 +2,37 @@
 
 namespace App\Actions\Coarse\Employer;
 
-use App\Validators\Worker\CreateWorkerValidator;
+use App\Actions\User\CreateUser;
+use App\Actions\Company\CreateCompany;
+use App\Actions\Employee\CreateEmployee;
+
+use App\Actions\Coarse\ActionSequence;
+use App\Actions\Coarse\Steps\CreateStep;
+
 use App\Actions\Executable;
 
 class CreateEmployer implements Executable
 {
 
-    private $validator;
+    private $actionSequence;
 
-    public function __construct(CourseAction $courseAction)
+    public function __construct(ActionSequence $actionSequence)
     {
+        $userStep = new CreateStep("user", CreateUser::class);
+        $companyStep = new CreateStep("company", CreateCompany::class);
+        $employeeStep = new CreateStep("employee", CreateEmployee::class);
+        $employeeStep->dependsRequired(["user", "company"]);
 
-        $courseAction->independent("user", UserCreate::class);
-        $courseAction->dependent("document", DocumentCreate::class);
+        $actionSequence->addStep($userStep);
+        $actionSequence->addStep($companyStep);
+        $actionSequence->addStep($employeeStep);
 
-        $this->courseAction = $courseAction;
+        $this->actionSequence = $actionSequence;
     }
 
     public function execute()
     {
-
-        $user = new CreateUser($createWorker->getValidator('user'));
-
-        return $user;
+        return $this->actionSequence->execute();
     }
 
 }

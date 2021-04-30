@@ -67,7 +67,7 @@ class Step implements Resolvable
         foreach($this->depends as $dependsOn)
         {
             if(!isset($resolvedStack[$dependsOn]))
-                throw "Dependent step depnds on unresolved step!";
+                throw new \Exception("Dependent step depnds on unresolved step!");
 
             $this->dependentData[$dependsOn . "_id"]= $resolvedStack[$dependsOn]->id; 
         }

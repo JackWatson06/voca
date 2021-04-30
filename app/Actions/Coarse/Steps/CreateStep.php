@@ -36,7 +36,7 @@ class CreateStep extends Step implements Resolvable
 
     private function skipStep($httpData)
     {
-        return !$this->required && $httpData->isEmpty();
+        return !$this->required && $this->isDependent() && $httpData->isEmpty();
     }
 
 }
