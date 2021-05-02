@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         );
 
   		User::firstOrCreate(
-          ['email' => 'm.mathew@americanlaborcompany.com'], 
+          ['email' => 'm.morgan@americanlaborcompany.com'], 
           [
               'name' => "Mathew Morgan",
               'phone' => "7167718154",

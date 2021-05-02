@@ -3,36 +3,21 @@
 namespace App\Http\Controllers\Api\Documents;
 
 use App\Http\Controllers\Controller;
-use App\Models\Document;
-use App\Http\Requests\DocumentsRequest;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
+use App\Actions\Document\{CreateDocument, ReadDocuments};
+
 
 class DocumentsController extends Controller
 {
-     
-    // /**
-    //  * File Systems
-    //  *
-    //  * @var FileSystem
-    //  */
-    // private Filesystem $fileSystem;
-
-    
-    // public function __construct(Filesystem $fileSystem)
-    // {
-    //     $this->fileSystem = $fileSystem;
-    // }
-
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ReadDocuments $action)
     {
+        return $action->execute();
     }
 
     /**
@@ -41,21 +26,9 @@ class DocumentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DocumentsRequest $request)
+    public function store(CreateDocument $action)
     {
-        $validated = $request->validated();
-
-        $document = Document::firstOrCreate(
-            ['hash_name' => $validated['hash_name']],
-            $validated
-        );
-
-        $fileContent = $validated['file']->get();
-        $encryptedContent = encrypt($fileContent);
-
-        Storage::put($validated['hash_name'] . '.dat', $fileContent);
-
-        return $document;
+        return $action->execute();
     }
 
     /**
@@ -66,7 +39,7 @@ class DocumentsController extends Controller
      */
     public function show($id)
     {
-        
+        return Document::findOrFail($id);
     }
 
     /**
@@ -89,7 +62,6 @@ class DocumentsController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
 }

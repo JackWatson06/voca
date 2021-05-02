@@ -17,7 +17,6 @@ class CrmServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CrmAdapterContract::class, function() {
-            // $crmClassName = config("app.crm");
             return new EngageBayAdapter(config("app.crm_token"));
         });
     }

@@ -3,26 +3,20 @@
 namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 
-use App\Facades\Constant;
-use App\Services\Crm\CrmAdapterContract;
-
-use Illuminate\Http\Request;
+use App\Actions\User\{CreateUser, ReadUser, ReadUsers, UpdateUser, DeleteUser};
 
 class UsersController extends Controller
 {
-
-
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CrmAdapterContract $crm)
+    public function index(ReadUsers $action)
     {
-        return User::all();
+        return $action->execute();
     }
 
     /**
@@ -31,28 +25,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CrmAdapterContract $crm)
+    public function store(CreateUser $action)
     {
-        $validated = $request->validate([
-            'name'     => 'required|max:255',
-            'email'    => 'required|max:255',
-            'phone'    => 'required|max:50',
-            'trade'    => 'nullable|max:255',
-            'info'     => 'nullable',
-            'role_id'  => 'required|exists:roles,id',
-            'password' => 'nullable'
-        ]);
-
-        $validated['password'] = bcrypt($validated['password'] ?? $this->generateRandomPassword(20)); 
-
-        $user = User::firstOrCreate(
-            ['email' => $validated['email']],
-            $validated
-        );
-
-        $user->wasRecentlyCreated ? $crm->createResource($user) : $crm->updateResource($user);
-
-        return $user;
+        return $action->execute();
     }
 
     /**
@@ -61,15 +36,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id, ReadUser $action)
     {
-        return User::findOrFail($id);
-    }
-
-
-    private function generateRandomPassword(int $length)
-    { 
-        return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$'), 1, $length);
+        return $action->execute($id);
     }
     
 }
