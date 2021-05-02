@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Api\Documents;
 
 use App\Http\Controllers\Controller;
-use App\Models\Document;
-use App\Http\Requests\DocumentsRequest;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
+use App\Actions\Document\{ ReadFile };
 
 class FileController extends Controller
 {
@@ -18,14 +15,19 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, ReadFile $action)
     {
-        $document = Document::where("hash_name", $id)->firstOrFail();
+        $fileInformation = $action->execute($id);
 
-        $fileContent = Storage::disk('local')->get($document->hash_name . '.dat');
-        $decryptedFile = decrypt($fileContent);
+        $fileName = $fileInformation["document"]->name;
+        $fileType = \GuzzleHttp\Psr7\mimetype_from_filename($fileName);
 
-        return $decryptedFile;
+        $headers = [
+            'Content-type'        => $fileType,
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+        ];
+    
+        return \Response::make($fileInformation["file"], 200, $headers);
     }
 
 

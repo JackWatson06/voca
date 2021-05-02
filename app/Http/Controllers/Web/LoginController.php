@@ -2,55 +2,45 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
 
+    use AuthenticatesUsers;
 
-	/**
-	 * Get the login page for users credentials
-	 * @param  Request $request The Laravel request object
-	 * @return View           Blade view
-	 */
-	public function create(Request $request){
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
 
-		return view('pages/login');
-	}
-
-
-	/**
-	 * Log the a new user into the site.
-	 * @param  Request $request The Laravel request object
-	 * @return View           Blade view
-	 */
-	public function store(Request $request){
-
-    $credentials = $request->only('email', 'password');
-
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-
-        return redirect()->route('web.users.index');
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
     }
 
-    return back()->with('status', 'Email, or password inputed does not match our records.');
-	}
 
-
-
-	public function destroy(Request $request){
-
-    Auth::logout();
-
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-
-    return redirect()->route('web.login.create');
-
-	}
-
+    public function show()
+    {
+        return view('layouts/login');
+    }
 }

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Users\{UsersController, WorkerController, EmployerController};
 use App\Http\Controllers\Api\Companies\CompaniesController;
-use App\Http\Controllers\Api\Documents\DocumentsController;
+use App\Http\Controllers\Api\Documents\{ DocumentsController, FileController };
 use App\Http\Controllers\Api\Employees\EmployeesController;
 
 
@@ -20,26 +20,19 @@ use App\Http\Controllers\Api\Employees\EmployeesController;
 |
 */
 
-Route::apiResource('worker', 	WorkerController::class,   ['except' => ["index", "show", "edit", "delete"]]);
-Route::apiResource('employer',  EmployerController::class, ['except' => ["index", "show", "edit", "delete"]]);
+Route::apiResource('worker', 	WorkerController::class,   ['except' => ["index", "show", "update", "destroy"]]);
+Route::apiResource('employer',  EmployerController::class, ['except' => ["index", "show", "update", "destroy"]]);
 
-Route::middleware('client')->name('api.')->group(function () {
+Route::middleware('auth:sanctum')->name('api.')->group(function () {
 
 
 	Route::apiResource('users', 		  UsersController::class);
 	Route::apiResource('companies', 	  CompaniesController::class);
 	Route::apiResource('employees', 	  EmployeesController::class);
 	Route::apiResource('documents', 	  DocumentsController::class);
-	Route::apiResource('documents.files', DocumentsFilesController::class)->only([ 'show' ]);
+	Route::apiResource('files', FileController::class)->only([ 'show' ]);
 	
 });
-
-
-
-
-
-
-
 
 
 /*

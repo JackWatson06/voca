@@ -2,8 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\User;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,13 +12,12 @@ class WorkerSignUp extends Mailable
     use Queueable, SerializesModels;
 
 
-        
     /**
      * User which gets passed into view
      *
      * @var mixed
      */
-    public $user;
+    public $worker;
 
 
     /**
@@ -28,9 +25,9 @@ class WorkerSignUp extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(array $worker)
     {
-        $this->user = $user;
+        $this->worker = $worker;
     }
 
     /**
@@ -40,6 +37,6 @@ class WorkerSignUp extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.users.user_signup');
+        return $this->view('emails.users.worker_signup');
     }
 }

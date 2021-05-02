@@ -1,1 +1,0 @@
-require("./resource-table.js");

@@ -27,7 +27,7 @@ class CreateDocumentValidator extends Validator
             'company_id'        => 'required_without:user_id|exists:companies,id',
             'hash_name'         => 'required|max:255|unique:documents',
             'document_usage_id' => 'required|exists:document_usages,id',
-            'file'              => 'required|mimes:csv,txt,xlx,xls,pdf|max:10240',
+            'file'              => 'required|mimes:csv,txt,xlx,xls,pdf,docx,doc|max:10240',
         ];
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Documents;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\Document\{CreateDocument};
+use App\Actions\Document\{CreateDocument, ReadDocuments};
 
 
 class DocumentsController extends Controller
@@ -15,9 +15,9 @@ class DocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ReadDocuments $action)
     {
-        return Document::all();
+        return $action->execute();
     }
 
     /**

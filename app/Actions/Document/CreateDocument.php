@@ -33,7 +33,7 @@ class CreateDocument implements Executable
         $fileContent = $validated['file']->get();
         $encryptedContent = encrypt($fileContent);
 
-        Storage::disk('local')->put($validated['hash_name'] . '.dat', $fileContent);
+        Storage::disk('local')->put($validated['hash_name'] . '.dat', $encryptedContent);
 
         return $document;
     }

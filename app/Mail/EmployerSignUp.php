@@ -12,13 +12,12 @@ class EmployerSignUp extends Mailable
     use Queueable, SerializesModels;
 
 
-        
     /**
      * User which gets passed into view
      *
      * @var mixed
      */
-    public $user;
+    public $employer;
 
 
     /**
@@ -26,9 +25,9 @@ class EmployerSignUp extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(array $employer)
     {
-        $this->user = $user;
+        $this->employer = $employer;
     }
 
     /**
@@ -38,6 +37,6 @@ class EmployerSignUp extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.users.user_signup');
+        return $this->view('emails.users.employer_signup');
     }
 }

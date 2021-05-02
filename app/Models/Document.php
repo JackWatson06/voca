@@ -30,7 +30,7 @@ class Document extends Model
      * @var array
      */
     protected $hidden = [
-        'hash_name',
+        // 'hash_name',
     ];
 
 }
