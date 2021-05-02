@@ -37,6 +37,6 @@ class EmployerSignUp extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.users.employer_signup');
+        return $this->view('emails.employer_signup');
     }
 }
