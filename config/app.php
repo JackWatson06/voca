@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'EST',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,6 +107,20 @@ return [
     */
 
     'faker_locale' => 'en_US',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Linked CRM
+    |--------------------------------------------------------------------------
+    |
+    | The CRM listed here controls the CRM we have our application talk to.
+    | We also specify the access-token for the CRM that we are consuming.
+    |
+    */
+
+    'crm' => App\Services\Crm\EngageBayAdapter::class,
+
+    'crm_token' => "6brb4rv1vto4r4den8oath5l11",
 
     /*
     |--------------------------------------------------------------------------
@@ -161,10 +175,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        
         /*
          * Package Service Providers...
          */
+        Onecentlin\Adminer\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -174,6 +189,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
+        /*
+         * Custom Service Providers...
+         */
+        App\Providers\ConstantServiceProvider::class,
+        App\Providers\CrmServiceProvider::class,
+        App\Providers\DataLoaderServiceProvider::class,
 
     ],
 
@@ -226,6 +249,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Constant' => App\Facades\Constant::class,
 
     ],
 

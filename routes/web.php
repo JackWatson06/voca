@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Web\AppController;
+use App\Http\Controllers\Web\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('login', [LoginController::class, 'show'])->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('{any}', [AppController::class, 'index'])->where('any', '.*')->middleware('auth:sanctum');
