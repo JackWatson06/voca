@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateDocumentUsagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('document_usages', function (Blueprint $table) {
             $table->id();
-			$table->string('name');
+            $table->string('name');
         });
+
+        DB::table('document_usages')->insert([
+            ['name' => 'RESUME'],
+            ['name' => 'PORTRAIT'] // Image of the user
+        ]);
     }
 
     /**
@@ -26,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('document_usages');
     }
 }

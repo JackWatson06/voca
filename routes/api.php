@@ -24,13 +24,12 @@ Route::apiResource('worker', 	WorkerController::class,   ['except' => ["index", 
 Route::apiResource('employer',  EmployerController::class, ['except' => ["index", "show", "update", "destroy"]]);
 
 Route::middleware('auth:sanctum')->name('api.')->group(function () {
-
-
+	
 	Route::apiResource('users', 		  UsersController::class);
 	Route::apiResource('companies', 	  CompaniesController::class);
 	Route::apiResource('employees', 	  EmployeesController::class);
 	Route::apiResource('documents', 	  DocumentsController::class);
-	Route::apiResource('files', FileController::class)->only([ 'show' ]);
+	Route::apiResource('files', 		  FileController::class)->only([ 'show' ]);
 	
 });
 

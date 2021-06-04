@@ -59,7 +59,6 @@
         "refresh-database" : [
             "php artisan migrate:rollback",
             "php artisan migrate",
-            "php artisan db:seed --class=ConstantSeeder",
             "php artisan db:seed"
         ],
         "post-autoload-dump": [

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentUsagesTable extends Migration
+class CreateApisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreateDocumentUsagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('document_usages', function (Blueprint $table) {
+        Schema::create('apis', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+			$table->string('name');
         });
+
+        DB::table('apis')->insert([
+            ['name' => 'ENGAGEBAY'],
+            ['name' => 'GOOGLECAL']
+        ]);
+    
     }
 
     /**
@@ -26,6 +32,6 @@ class CreateDocumentUsagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document_usages');
+        Schema::dropIfExists('apis');
     }
 }

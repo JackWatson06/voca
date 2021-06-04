@@ -3,6 +3,7 @@
 namespace App\Services\Constant;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class Constant
 {
@@ -86,6 +87,8 @@ class Constant
 		 * @return void
 		 */
 		private function extractConstantsFromTable(string $table){
+			if(!Schema::hasTable($table)) return;
+
 			$constants = DB::table($table)->get()->toArray();
 
 			foreach($constants as $constant)
