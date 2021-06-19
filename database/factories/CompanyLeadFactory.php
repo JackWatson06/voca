@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
+use App\Models\CompanyLead;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class CompanyFactory extends Factory
+class CompanyLeadFactory extends Factory
 {
 
     /**
@@ -14,7 +15,7 @@ class CompanyFactory extends Factory
      *
      * @var string
      */
-    protected $model = Company::class;
+    protected $model = CompanyLead::class;
 
 
 
@@ -26,7 +27,11 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company,
+            'fname' => $this->faker->firstName,
+            'lname' => $this->faker->lastName,
+            'email' => $this->faker->unique()->safeEmail,
+            'phone' => $this->faker->phoneNumber,
+            'company_name' => $this->faker->company,
             'industry' => $this->faker->randomElement(['HVAC', 'Electrician', 'Paving', 'Construction']),
             'size' => $this->faker->numberBetween(0, 4000),
             'info'    => $this->faker->paragraph(4)

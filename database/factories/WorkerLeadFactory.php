@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
+use App\Models\WorkerLead;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class CompanyFactory extends Factory
+class WorkerLeadFactory extends Factory
 {
-
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Company::class;
+    protected $model = WorkerLead::class;
 
 
 
@@ -26,9 +26,11 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company,
-            'industry' => $this->faker->randomElement(['HVAC', 'Electrician', 'Paving', 'Construction']),
-            'size' => $this->faker->numberBetween(0, 4000),
+            'fname' => $this->faker->firstName,
+            'lname' => $this->faker->lastName,
+            'email' => $this->faker->unique()->safeEmail,
+            'phone' => $this->faker->phoneNumber,
+            'trade' => $this->faker->randomElement(['HVAC Technician', 'Electrician', 'Paver', 'Laborer']),
             'info'    => $this->faker->paragraph(4)
         ];
     }

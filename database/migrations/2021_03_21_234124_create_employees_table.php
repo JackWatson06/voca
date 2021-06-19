@@ -18,9 +18,9 @@ class CreateEmployeesTable extends Migration
 
             $table->foreignId('user_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->foreignId('company_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
-            $table->boolean('active')->default(true);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

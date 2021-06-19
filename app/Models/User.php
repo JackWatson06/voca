@@ -24,8 +24,7 @@ class User extends Authenticatable
         'trade',
         'info',
         'role_id',
-        'password',
-        'active'
+        'password'
     ];
 
     /**
@@ -38,13 +37,37 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
+
+
+    /**
+     * A user can have many different documents
+     *
+     * @return void
+     */
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+
+        
+    /**
+     * A user can be an employee at many different places
+     *
+     * @return void
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 
 }
