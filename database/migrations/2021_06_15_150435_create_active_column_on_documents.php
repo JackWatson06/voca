@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateActiveColumnOnDocuments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,7 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name', 255);
-            $table->string('industry', 255);
-            $table->integer('size')->nullable();
-            $table->text('info')->nullable();
-
-            $table->timestamps();
+        Schema::table('documents', function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -33,6 +25,8 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

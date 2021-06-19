@@ -18,8 +18,19 @@ class Company extends Model
         'name',
         'industry',
         'size',
-        'info',
-        'active'
+        'info'
     ];
+
+
+    
+    /**
+     * A company can have many employees
+     *
+     * @return void
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 
 }
