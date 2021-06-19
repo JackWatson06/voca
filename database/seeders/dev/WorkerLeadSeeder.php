@@ -2,9 +2,8 @@
 
 namespace Database\Seeders\Dev;
 
-use Illuminate\Database\Seeder;
-
 use App\Models\WorkerLead;
+use Illuminate\Database\Seeder;
 
 class WorkerLeadSeeder extends Seeder
 {

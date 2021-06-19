@@ -5,11 +5,8 @@ namespace Database\Factories;
 use App\Models\Document;
 use App\Models\User;
 use App\Models\WorkerLead;
-
-use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentFactory extends Factory
 {
@@ -34,7 +31,7 @@ class DocumentFactory extends Factory
         // Generate the morph-to data
         $documentables = [
             User::class,
-            WorkerLead::class
+            WorkerLead::class,
         ]; // Add new noteables here as we make them
         $documentableType = $this->faker->randomElement($documentables);
         $documentableId = $documentableType::factory()->create()->id;
@@ -54,7 +51,7 @@ class DocumentFactory extends Factory
             'type'      => 'txt',
             'document_usage_id' => 1,
             'documentable_id' => $documentableId,
-            'documentable_type' => $documentableType
+            'documentable_type' => $documentableType,
         ];
     }
 }

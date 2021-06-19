@@ -1,0 +1,8 @@
+{
+    "excluded": [
+        "./.db",
+        "./.vscode",
+        "./storage",
+        "./vendor"
+    ]
+}

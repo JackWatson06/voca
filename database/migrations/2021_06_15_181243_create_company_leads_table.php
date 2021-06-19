@@ -1,7 +1,6 @@
 <?php
 
 use App\Facades\Constant;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,11 +9,6 @@ class CreateCompanyLeadsTable extends Migration
 {
 
     
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('company_leads', function (Blueprint $table) {
@@ -89,11 +83,6 @@ class CreateCompanyLeadsTable extends Migration
 
 
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         $this->dataDown();        
