@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDocumentUsagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('document_usages', function (Blueprint $table) {
@@ -24,11 +19,6 @@ class CreateDocumentUsagesTable extends Migration
         ]);
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('document_usages');

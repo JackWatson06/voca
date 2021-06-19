@@ -3,9 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\CompanyLead;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class CompanyLeadFactory extends Factory
 {
@@ -34,7 +32,7 @@ class CompanyLeadFactory extends Factory
             'company_name' => $this->faker->company,
             'industry' => $this->faker->randomElement(['HVAC', 'Electrician', 'Paving', 'Construction']),
             'size' => $this->faker->numberBetween(0, 4000),
-            'info'    => $this->faker->paragraph(4)
+            'info'    => $this->faker->paragraph(4),
         ];
     }
 }

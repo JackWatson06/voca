@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\WorkerLead;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class WorkerLeadFactory extends Factory
 {
@@ -31,7 +30,7 @@ class WorkerLeadFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->phoneNumber,
             'trade' => $this->faker->randomElement(['HVAC Technician', 'Electrician', 'Paver', 'Laborer']),
-            'info'    => $this->faker->paragraph(4)
+            'info'    => $this->faker->paragraph(4),
         ];
     }
 }

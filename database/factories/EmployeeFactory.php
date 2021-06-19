@@ -2,12 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Employee;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
-use App\Models\User;
 use App\Models\Company;
+use App\Models\Employee;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
 {
@@ -30,7 +28,7 @@ class EmployeeFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create()->id,
-            'company_id' => Company::factory()->create()->id
+            'company_id' => Company::factory()->create()->id,
         ];
     }
 }

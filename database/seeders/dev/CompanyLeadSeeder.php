@@ -2,9 +2,8 @@
 
 namespace Database\Seeders\Dev;
 
-use Illuminate\Database\Seeder;
-
 use App\Models\CompanyLead;
+use Illuminate\Database\Seeder;
 
 class CompanyLeadSeeder extends Seeder
 {

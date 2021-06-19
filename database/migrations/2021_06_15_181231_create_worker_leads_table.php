@@ -1,24 +1,17 @@
 <?php
 
 use App\Facades\Constant;
-use Illuminate\Support\Facades\Storage;
-
 use App\Models\User;
 use App\Models\WorkerLead;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class CreateWorkerLeadsTable extends Migration
 {
 
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
 
@@ -112,11 +105,6 @@ class CreateWorkerLeadsTable extends Migration
 
 
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         $this->dataDown();

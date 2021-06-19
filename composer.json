@@ -57,6 +57,9 @@
         "docker-up" : [
             "docker-compose up"
         ],
+        "format" : [
+            "php ./vendor/bin/tlint format"
+        ],
         "test" : [
             "./vendor/bin/tlint",
             "php ./vendor/bin/phpunit"
