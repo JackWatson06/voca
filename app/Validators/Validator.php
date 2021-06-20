@@ -90,7 +90,7 @@ abstract class Validator
         // Take out any validators that may be inside of the rules.
         // These should be validated seperately. Does not matter if we validate them now or before.
         $subValidators = $this->removeValidatorsFromRules($rules);
-        $this->validateSubValidators($subValidators);
+        $completedValidators = $this->validateSubValidators($subValidators);
 
         // Validate the main resource we are trying to validate against.s
         $validator = LaravelValidator::make(
@@ -104,7 +104,7 @@ abstract class Validator
                 'Error: ' . $this->errors
             );
 
-        $this->data = $validator->valid();
+        $this->data = array_merge($validator->valid(), $completedValidators);
 
         $this->postProcessing($this->data);
     }
@@ -118,7 +118,7 @@ abstract class Validator
      * @param  array $rules
      * @return void
      */
-    private function subResourceValidator(array &$rules)
+    private function removeValidatorsFromRules(array &$rules)
     {
         $subResourceValidators = [];
 
@@ -128,7 +128,7 @@ abstract class Validator
             if($rule instanceof SubValidator)
             {
                 $subResourceValidators[$attribute] = $rule;
-                unset($rules[$attibute]);
+                unset($rules[$attribute]);
             }
         }
 
@@ -149,18 +149,17 @@ abstract class Validator
     {
         $completedValidators = [];
 
-        foreach($this->data as $attibute => $value)
+        foreach($this->data as $attribute => $value)
         {
             // If we can actually validate any sub validators then call them, and store result in the completed
             // validators.
-            if(in_array($attibute, $validators))
+            if(isset($validators[$attribute]))
             {
-                $valdiator = $validators[$attibute]->validate($value);
+                $validator = $validators[$attribute]->validate($value);
                 $completedValidators[$attribute] = $validator;
             }   
         }
 
         return $completedValidators;
     }
-
 }

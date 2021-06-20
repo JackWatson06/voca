@@ -16,15 +16,16 @@ class CreateUserValidator extends Validator
     protected function rules() : array
     {
         return [
-                'name'      => 'required|max:255',
+                'fname'     => 'required|max:255',
+                'lname'     => 'required|max:255',
                 'email'     => 'required|max:255',
                 'phone'     => 'required|max:50',
                 'trade'     => 'nullable|max:255',
                 'info'      => 'nullable',
                 'role_id'   => 'required|exists:roles,id',
                 'password'  => 'nullable',
-                'documents' => new SubValidator("Document\\CreateDocumentValidator"),
-            ];
+                'document'  => new SubValidator("Document\\CreateDocumentValidator"),
+        ];
     }
 
 
