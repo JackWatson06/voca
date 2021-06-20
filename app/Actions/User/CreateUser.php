@@ -21,6 +21,8 @@ class CreateUser implements Executable
     {
         $validData = $this->validator->getData();
 
+        dd($validData);
+
         // Create the user
         $user = User::firstOrCreate(
             ['email' => $validData['email']],

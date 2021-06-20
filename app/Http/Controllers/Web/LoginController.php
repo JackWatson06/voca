@@ -21,12 +21,14 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
 
     /**
      * Create a new controller instance.
@@ -38,7 +40,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    
 
+    /**
+     * Show the users login page. This uses a second view in the REACT app since authentication occurs locally.
+     *
+     * @return void
+     */
     public function show()
     {
         return view('layouts/login');

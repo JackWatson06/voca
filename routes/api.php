@@ -3,11 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\Users\{UsersController, WorkerController, EmployerController};
+use App\Http\Controllers\Api\Users\UsersController;
 use App\Http\Controllers\Api\Companies\CompaniesController;
 use App\Http\Controllers\Api\Documents\{ DocumentsController, FileController };
 use App\Http\Controllers\Api\Employees\EmployeesController;
-
+use App\Http\Controllers\Api\WorkerLeads\WorkerLeadsController;
+use App\Http\Controllers\Api\CompanyLeads\CompanyLeadsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +21,20 @@ use App\Http\Controllers\Api\Employees\EmployeesController;
 |
 */
 
-Route::apiResource('worker', 	WorkerController::class,   ['except' => ["index", "show", "update", "destroy"]]);
-Route::apiResource('employer',  EmployerController::class, ['except' => ["index", "show", "update", "destroy"]]);
+Route::apiResource('worker', 	WorkerLeadsController::class)->only([ 'store' ]);
+Route::apiResource('employer',  CompanyLeadsController::class)->only([ 'store' ]);
 
 Route::middleware('auth:sanctum')->name('api.')->group(function () {
 	
-	Route::apiResource('users', 		  UsersController::class);
-	Route::apiResource('companies', 	  CompaniesController::class);
-	Route::apiResource('employees', 	  EmployeesController::class);
-	Route::apiResource('documents', 	  DocumentsController::class);
-	Route::apiResource('files', 		  FileController::class)->only([ 'show' ]);
-	
+	Route::apiResource('users', 		  	UsersController::class);
+	Route::apiResource('companies', 	  	CompaniesController::class);
+	Route::apiResource('employees', 	  	EmployeesController::class);
+
+	Route::apiResource('documents', 	  	DocumentsController::class);
+	Route::apiResource('files', 		  	FileController::class)->only([ 'show' ]);
+
+	// Route::apiResource('worker_leads', 		WorkerLeadsController::class,   ['except' => ["store"]]);
+	Route::apiResource('company_leads',  	CompanyLeadsController::class);
 });
 
 
