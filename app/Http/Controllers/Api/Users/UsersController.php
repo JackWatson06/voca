@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\User\{CreateUser, ReadUser, ReadUsers, UpdateUser, DeleteUser};
+use Illuminate\Http\Request;
+
+use App\Actions\User\{CreateUser, ReadUser, ReadUsers};
 
 class UsersController extends Controller
 {

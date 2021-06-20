@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
         'email',
         'phone',
         'trade',
@@ -55,7 +57,7 @@ class User extends Authenticatable
      */
     public function documents()
     {
-        return $this->hasMany(Document::class);
+        return $this->morphMany(Document::class, 'documentable');
     }
 
 

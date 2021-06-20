@@ -29,6 +29,4 @@ class FileController extends Controller
     
         return \Response::make($fileInformation["file"], 200, $headers);
     }
-
-
 }
