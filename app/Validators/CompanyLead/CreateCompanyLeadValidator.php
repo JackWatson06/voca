@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Validators\Company;
+namespace App\Validators\CompanyLead;
 
 use App\Validators\Validator;
 
-class CreateCompanyValidator extends Validator
+class CreateCompanyLeadValidator extends Validator
 {
 
     protected function rules() : array

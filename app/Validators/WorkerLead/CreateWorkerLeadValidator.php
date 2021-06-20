@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Validators\Company;
+namespace App\Validators\WorkerLead;
 
 use App\Validators\Validator;
+use App\Validators\SubValidator;
 
-class CreateCompanyValidator extends Validator
+class CreateWorkerLeadValidator extends Validator
 {
 
     /**

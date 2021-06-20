@@ -2,9 +2,8 @@
 
 namespace App\Actions\Company;
 
-use App\Models\Company;
-
 use App\Actions\Executable;
+use App\Models\Company;
 
 class ReadCompanies implements Executable
 {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\WorkerLeads;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\WorkerLeads\{ CreateWorkerLead, DeleteWorkerLead, ReadWorkerLead, ReadWorkerLeads, UpdateWorkerLead };
+use App\Actions\WorkerLeads\{ CreateWorkerLead, ReadWorkerLead, ReadWorkerLeads };
 
 
 class WorkerLeadsController extends Controller

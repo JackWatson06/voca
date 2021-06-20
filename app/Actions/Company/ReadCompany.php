@@ -18,5 +18,4 @@ class ReadCompany implements ResourceExecutable
     {
         return Company::findOrFail($id);
     }
-
 }

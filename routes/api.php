@@ -21,8 +21,8 @@ use App\Http\Controllers\Api\CompanyLeads\CompanyLeadsController;
 |
 */
 
-Route::apiResource('worker_leads',  CompanyLeadsController::class)->only([ 'store' ]);
-Route::apiResource('company_leads', 	WorkerLeadsController::class)->only([ 'store' ]);
+Route::apiResource('worker_leads', 		WorkerLeadsController::class)->only([ 'store' ]);
+Route::apiResource('company_leads',  	CompanyLeadsController::class)->only([ 'store' ]);
 
 Route::middleware('auth:sanctum')->name('api.')->group(function () {
 	
