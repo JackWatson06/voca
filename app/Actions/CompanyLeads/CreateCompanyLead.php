@@ -20,13 +20,13 @@ class CreateCompanyLead implements Executable
     {
         $validData = $this->validator->getData();
 
-        // // Create the user
-        // $user = User::firstOrCreate(
-        //     ['email' => $validData['email']],
-        //     $validData
-        // );
+        // Create the user
+        $companyLead = CompanyLead::firstOrCreate(
+            ['email' => $validData['email']],
+            $validData
+        );
 
-        // return $user;
+        return $companyLead;
     }
 
 }

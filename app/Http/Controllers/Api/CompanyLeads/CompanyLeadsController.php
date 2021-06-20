@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\CompanyLeads;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\CompanyLeads\{ CreateCompanyLead, DeleteCompanyLead, ReadCompanyLead, ReadCompanyLeads, UpdateCompanyLead };
+use App\Actions\CompanyLeads\{ CreateCompanyLead, ReadCompanyLead, ReadCompanyLeads };
 
 
 class CompanyLeadsController extends Controller
@@ -45,31 +45,5 @@ class CompanyLeadsController extends Controller
     public function show(int $id, ReadCompanyLead $action)
     {
         return $action->execute($id);
-    }
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update(int $id, UpdateCompanyLead $action)
-    {
-        return $action->execute($id);
-    }   
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(int $id, DeleteCompanyLead $action)
-    {
-        return $action->execute($id);
-    }   
+    } 
 }
