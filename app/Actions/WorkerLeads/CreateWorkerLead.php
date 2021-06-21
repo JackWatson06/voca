@@ -30,10 +30,13 @@ class CreateWorkerLead implements Executable
         if(isset($validData["document"]))
         {
             $createDocAction = new CreateDocument($validData["document"]);
-            $createDocAction->execute($workerLead);
+            $document = $createDocAction->execute($workerLead);
         }
 
-        return $workerLead;
+        return [
+            "worker_lead" => $workerLead, 
+            "document" => $document
+        ];
     }
 
 }

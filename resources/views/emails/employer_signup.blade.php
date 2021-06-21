@@ -6,15 +6,12 @@
 
 <h3>Contact Information</h3>
 
-@isset($employer['user'])
-    <p>Name: {{ $employer['user']->name }}</p>
-    <p>Email: {{ $employer['user']->email }}</p>
-    <p>Phone: {{ $employer['user']->phone }}</p>
-@endisset
-
-@isset($employer['company'])
-    <p>Company Name: {{ $employer['company']->name }}</p>
-    <p>Company Industry: {{ $employer['company']->industry }}</p>
-    <p>Company Size: {{ $employer['company']->size ?? "Not Specified" }}</p>
-    <p>Additional Notes: {{ $employer['company']->info ?? "Not Specified" }}</p>
+@isset($employer['company_lead'])
+    <p>Name: {{ $employer['company_lead']->fname }} {{ $employer['company_lead']->lname }}</p>
+    <p>Email: {{ $employer['company_lead']->email }}</p>
+    <p>Phone: {{ $employer['company_lead']->phone }}</p>
+    <p>Company Name: {{ $employer['company_lead']->company_name }}</p>
+    <p>Company Industry: {{ $employer['company_lead']->industry }}</p>
+    <p>Company Size: {{ $employer['company_lead']->size ?? "Not Specified" }}</p>
+    <p>Additional Notes: {{ $employer['company_lead']->info ?? "Not Specified" }}</p>
 @endisset
