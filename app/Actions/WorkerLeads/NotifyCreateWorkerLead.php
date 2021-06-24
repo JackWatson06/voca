@@ -15,7 +15,7 @@ class NotifyCreateWorkerLead extends CreateWorkerLead
         $returnData = parent::execute();
 
         // Hard code Matt, and Jack for emails. This will change shortly.
-        $adminUsers = User::whereIn('role_id', ['1', '2'])->get();
+        $adminUsers = User::where('role_id', Constant::get("roles:ADMIN"))->get();
         foreach($adminUsers as $user)
         {
             Mail::to($user)->queue(new WorkerSignUp($returnData));

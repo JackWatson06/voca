@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
         User::firstOrCreate(
             [ 'email' => 'j.watson@americanlaborcompany.com'],
             [
-                'name' => "Jack Watson",
+                'fname' => "Jack",
+                'lname' => "Watson",
                 'phone' => "7167718154",
                 'trade' => "None",
                 'role_id' => 1,
@@ -29,7 +30,8 @@ class UserSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'm.morgan@americanlaborcompany.com'], 
             [
-                'name' => "Mathew Morgan",
+                'fname' => "Mathew",
+                'lname' => "Morgan",
                 'phone' => "7167718154",
                 'trade' => "None",
                 'role_id' => 1,
