@@ -6,11 +6,25 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // Import all of the different views of the application.
 import {
     Home, 
-    File, 
+
     WorkerLead, 
     WorkerLeads, 
+
     CompanyLead, 
-    CompanyLeads
+    CompanyLeads,
+
+    CompanyCreate,
+    CompanyEdit,
+    Companies,
+    Company,
+
+    UserCreate,
+    UserEdit,
+    Users,
+    User,
+
+    File, 
+
 } from '../components';
 
 
@@ -22,10 +36,21 @@ function AppRouter() {
 
             <Route path="/worker_leads"         component={ WorkerLeads } />
             <Route path="/worker_leads/:id"     component={ WorkerLead } />
+
             <Route path="/company_leads"        component={ CompanyLeads } />
             <Route path="/company_leads/:id"    component={ CompanyLead } />
 
-            <Route path="/file/:fileHash" component={ File } />
+            <Route path="/companies"            component={ Companies } />
+            <Route path="/companies/create"     component={ CompanyCreate } />
+            <Route path="/companies/:id"        component={ Company } />
+            <Route path="/companies/:id/edit"   component={ CompanyEdit } />
+
+            <Route path="/users"                component={ Users } />
+            <Route path="/users/create"         component={ UserCreate } />
+            <Route path="/users/:id"            component={ User } />
+            <Route path="/users/:id/edit"       component={ UserEdit } />
+
+            <Route path="/file/:fileHash"       component={ File } />
         </Router>
     );
 }

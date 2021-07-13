@@ -2,13 +2,15 @@ import React from "react";
 
 export const CompanyLeadCard = props => {
 
+    console.log(props.data);
 
     //Generate the Company Lead list page.
     // TODO this needs some major refacotring as we can break this down into smaller componoents.
     return (
         <div className="card text-left mb-4 mt-4" key={props.data.id}>
-            <div className="card-header font-weight-bold">
+            <div className="card-header font-weight-bold d-flex justify-content-between">
                 <h4 className="mb-2 mt-2">{props.data.fname + " " + props.data.lname}: {props.data.industry}</h4>
+                <h4 className="mb-2 mt-2">{  new Date(props.data.created_at).toLocaleDateString() }</h4>
             </div>
             <div className="card-body">
                 <div className="row">
@@ -54,10 +56,6 @@ export const CompanyLeadCard = props => {
                     <div className="col-4 text-left p-0">
                         <p>{props.data.info}</p>
                     </div>
-                </div>
-
-                <div className="d-flex flex-row justify-content-end">
-                    {/* <a href={'/worker_leads/' + props.data.id} className="btn btn-primary mr-3">Profile</a> */}
                 </div>
             </div>
 
