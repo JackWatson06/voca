@@ -6,12 +6,12 @@
 
 <h3>Contact Information</h3>
 
-@isset($worker['user'])
-    <p>Name: {{ $worker['user']->name }}</p>
-    <p>Email: {{ $worker['user']->email }}</p>
-    <p>Phone: {{ $worker['user']->phone }}</p>
-    <p>Trade: {{ $worker['user']->trade ?? "Not Specified" }}</p>
-    <p>Additional Notes: {{ $worker['user']->info }}</p>
+@isset($worker['worker_lead'])
+    <p>Name: {{ $worker['worker_lead']->fname }} {{ $worker['worker_lead']->lname }}</p>
+    <p>Email: {{ $worker['worker_lead']->email }}</p>
+    <p>Phone: {{ $worker['worker_lead']->phone }}</p>
+    <p>Trade: {{ $worker['worker_lead']->trade ?? "Not Specified" }}</p>
+    <p>Additional Notes: {{ $worker['worker_lead']->info }}</p>
 @endisset
 
 @isset($worker['document'])

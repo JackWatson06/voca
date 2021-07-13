@@ -26,7 +26,7 @@ class CreateCompanyLead implements Executable
             $validData
         );
 
-        return $companyLead;
+        return ["company_lead" => $companyLead];
     }
 
 }

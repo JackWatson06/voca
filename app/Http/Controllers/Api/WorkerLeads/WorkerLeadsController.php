@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\WorkerLeads;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\WorkerLeads\{ CreateWorkerLead, ReadWorkerLead, ReadWorkerLeads };
+use App\Actions\WorkerLeads\{ NotifyCreateWorkerLead, ReadWorkerLead, ReadWorkerLeads };
 
 
 class WorkerLeadsController extends Controller
@@ -29,7 +29,7 @@ class WorkerLeadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateWorkerLead $action)
+    public function store(NotifyCreateWorkerLead $action)
     {
         return $action->execute();
     }

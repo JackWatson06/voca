@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\CompanyLeads;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\CompanyLeads\{ CreateCompanyLead, ReadCompanyLead, ReadCompanyLeads };
+use App\Actions\CompanyLeads\{ NotifyCreateCompanyLead, ReadCompanyLead, ReadCompanyLeads };
 
 
 class CompanyLeadsController extends Controller
@@ -29,7 +29,7 @@ class CompanyLeadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCompanyLead $action)
+    public function store(NotifyCreateCompanyLead $action)
     {
         return $action->execute();
     }
