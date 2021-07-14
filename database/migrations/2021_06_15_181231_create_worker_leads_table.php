@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CreateWorkerLeadsTable extends Migration
 {
-
-
+    /**
+     * Create the worke leads database
+     *
+     * @return void
+     */
     public function up()
     {
 
@@ -33,8 +36,6 @@ class CreateWorkerLeadsTable extends Migration
 
         $this->dataUp();
     }
-
-    
 
     /**
      * Migrate the previous users inside the users table to the worker leads table.
@@ -104,8 +105,11 @@ class CreateWorkerLeadsTable extends Migration
         }
     }
 
-
-
+    /**
+     * Migrate the worker leads database down.
+     *
+     * @return void
+     */
     public function down()
     {
         $this->dataDown();
@@ -113,8 +117,6 @@ class CreateWorkerLeadsTable extends Migration
         Schema::dropIfExists('worker_leads');
     }
 
-
-        
     /**
      * Reverse the data migration from above.
      *

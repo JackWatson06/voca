@@ -11,7 +11,11 @@
     <p>Email: {{ $worker['worker_lead']->email }}</p>
     <p>Phone: {{ $worker['worker_lead']->phone }}</p>
     <p>Trade: {{ $worker['worker_lead']->trade ?? "Not Specified" }}</p>
-    <p>Additional Notes: {{ $worker['worker_lead']->info }}</p>
+    <p>Additional Notes: {{ $worker['worker_lead']->info ?? No Notes }}</p>
+@endisset
+
+@isset($worker['location'])
+    <p>Location: {{ $worker['location']->city }}, {{ $worker['location']->state }}</p>
 @endisset
 
 @isset($worker['document'])

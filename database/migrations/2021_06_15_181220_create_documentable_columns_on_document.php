@@ -16,35 +16,7 @@ class CreateDocumentableColumnsOnDocument extends Migration
             $table->string('documentable_type')->nullable();
         });
     
-
-        // Turn the current foreign keys in the documents to use a morphTo relationship in laravel.
-        $documents = DB::table('documents')->get();
-        foreach($documents as $document)
-        {
-
-            // Determine which id to pick for the morph column
-            $documentableId = null;
-            $documentableType = null;
-
-            if($document->user_id != null)
-            {
-                $documentableId = $document->user_id;
-                $documentableType = "App\User";
-            }
-            else if($document->company_id != null)
-            {
-                $documentableId = $document->company_id;
-                $documentableType = "App\Company";
-            }
-
-            // Update the respective column
-            DB::table('documents')->where('id', $document->id)->update(
-                [
-                    "documentable_id" => $documentableId, 
-                    "documentable_type" => $documentableType
-                ]
-            );
-        }
+        $this->dataUp();
 
         // Drop old tables, and make the new columns nullable.
         Schema::table('documents', function (Blueprint $table) {
@@ -64,6 +36,43 @@ class CreateDocumentableColumnsOnDocument extends Migration
 
     }
 
+    /**
+     * Migrate the data up so that we can changge how documents are stored
+     *
+     * @return void
+     */
+    private function dataUp()
+    {
+        // Turn the current foreign keys in the documents to use a morphTo relationship in laravel.
+        $documents = DB::table('documents')->get();
+        foreach($documents as $document)
+        {
+
+            // Determine which id to pick for the morph column
+            $documentableId = null;
+            $documentableType = null;
+
+            if($document->user_id != null)
+            {
+                $documentableId = $document->user_id;
+                $documentableType = "App\Models\User";
+            }
+            else if($document->company_id != null)
+            {
+                $documentableId = $document->company_id;
+                $documentableType = "App\Models\Company";
+            }
+
+            // Update the respective column
+            DB::table('documents')->where('id', $document->id)->update(
+                [
+                    "documentable_id" => $documentableId, 
+                    "documentable_type" => $documentableType
+                ]
+            );
+        }
+    }
+
     public function down()
     {
 
@@ -73,6 +82,23 @@ class CreateDocumentableColumnsOnDocument extends Migration
             $table->foreignId('company_id')->nullable()->constrained()->onUpdate('restrict')->onDelete('restrict');
         });
 
+        $this->dataDown();
+
+        // Drop the morph columns
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropColumn('documentable_id');
+            $table->dropColumn('documentable_type');
+        });
+
+    }
+
+    /**
+     * Migrate the data down so that we can reverse the migration up
+     *
+     * @return void
+     */
+    private function dataDown()
+    {
         // Turn the current foreign keys in the documents to use a morphTo relationship in laravel.
         $documents = DB::table('documents')->get();
         foreach($documents as $document)
@@ -82,11 +108,11 @@ class CreateDocumentableColumnsOnDocument extends Migration
             $id = $document->documentable_id;
             $type = $document->documentable_type;
 
-            if($type === "App\User")
+            if($type === "App\Models\User")
             {
                 $type = "user_id";
             }
-            else if($type === "App\Company")
+            else if($type === "App\Models\Company")
             {
                 $type = "company_id";
             }
@@ -97,12 +123,5 @@ class CreateDocumentableColumnsOnDocument extends Migration
                 ]
             );
         }
-
-        // Drop the morph columns
-        Schema::table('documents', function (Blueprint $table) {
-            $table->dropColumn('documentable_id');
-            $table->dropColumn('documentable_type');
-        });
-
     }
 }
