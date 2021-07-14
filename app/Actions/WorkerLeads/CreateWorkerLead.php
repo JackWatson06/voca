@@ -51,7 +51,7 @@ class CreateWorkerLead implements Executable
             $returnData['location'] = $location;
         }
 
-        return ["Testing"];
+        return $returnData;
     }
 
 }
