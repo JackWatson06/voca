@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Companies;
 
 use App\Http\Controllers\Controller;
 
-use App\Actions\User\{CreateCompany};
+use App\Actions\Company\{ CreateCompany, ReadCompany, ReadCompanies };
 
 class CompaniesController extends Controller
 {
@@ -14,11 +14,13 @@ class CompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index(ReadCompanies $action)
-    // {
-    //     return $action->execute();
-    // }
+    public function index(ReadCompanies $action)
+    {
+        return $action->execute();
+    }
 
+
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -30,15 +32,16 @@ class CompaniesController extends Controller
         return $action->execute();
     }
 
+
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(int $id, ReadCompany $action)
-    // {
-    //     return $action->execute($id);
-    // }
-
+    public function show(int $id, ReadCompany $action)
+    {
+        return $action->execute($id);
+    }
 }

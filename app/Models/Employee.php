@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -16,17 +17,31 @@ class Employee extends Model
      */
     protected $fillable = [
         'user_id',
-        'company_id',
-        'active'
+        'company_id'
     ];
+    
+
+    
+    /**
+     * A user can be many employees (this is to save history)
+     *
+     * @return void
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 
     /**
-     * The attributes that should be hidden for arrays.
+     * A company can have many employees
      *
-     * @var array
+     * @return void
      */
-    protected $hidden = [
-        'hash_name',
-    ];
+    public function companies()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
 }

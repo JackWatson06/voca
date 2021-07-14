@@ -8,12 +8,15 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
     protected $model = User::class;
+
+
 
     /**
      * Define the model's default state.
@@ -23,10 +26,15 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'fname' => $this->faker->firstName,
+            'lname' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
+            'phone' => $this->faker->phoneNumber,
+            'trade' => $this->faker->randomElement(['HVAC Technician', 'Electrician', 'Paver', 'Laborer']),
+            'info'    => $this->faker->paragraph(4),
+            'role_id' => $this->faker->randomElement([2, 3]),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
     }

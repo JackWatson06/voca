@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDocumentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
@@ -27,12 +22,7 @@ class CreateDocumentsTable extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('documents');

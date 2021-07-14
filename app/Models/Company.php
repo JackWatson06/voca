@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +19,19 @@ class Company extends Model
         'name',
         'industry',
         'size',
-        'info',
-        'active'
+        'info'
     ];
+
+
+    
+    /**
+     * A company can have many employees
+     *
+     * @return void
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 
 }

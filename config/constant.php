@@ -6,7 +6,7 @@ return [
 			'roles',
 			'resources',
 			'apis',
-			'document_usages'
+			'document_usages',
 	],
 
 ];
