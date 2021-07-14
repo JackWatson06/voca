@@ -4,7 +4,10 @@ namespace App\Actions\WorkerLeads;
 
 use App\Actions\Executable;
 use App\Actions\Document\CreateDocument;
+use App\Actions\Location\CreateLocation;
+
 use App\Models\WorkerLead;
+
 use App\Validators\WorkerLead\CreateWorkerLeadValidator;
 
 class CreateWorkerLead implements Executable
@@ -16,7 +19,12 @@ class CreateWorkerLead implements Executable
     {
         $this->validator = $validator;
     }
-
+    
+    /**
+     * Create a new worker lead this can be changed to using reflection.
+     *
+     * @return array
+     */
     public function execute()
     {
         $validData = $this->validator->getData();
@@ -33,9 +41,16 @@ class CreateWorkerLead implements Executable
             $document = $createDocAction->execute($workerLead);
         }
 
+        if(isset($validData["location"]))
+        {
+            $createLocationAction = new CreateLocation($validData["location"]);
+            $location = $createLocationAction->execute($workerLead);
+        }
+
         return [
             "worker_lead" => $workerLead, 
-            "document" => $document
+            "document" => $document,
+            "location" => $location
         ];
     }
 
