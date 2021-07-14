@@ -26,4 +26,13 @@ class CompanyLead extends Model
         'info'
     ];
 
+    /**
+     * A user can be an employee at many different places
+     *
+     * @return void
+     */
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }
