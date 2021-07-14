@@ -28,30 +28,30 @@ class CreateWorkerLead implements Executable
     public function execute()
     {
         $validData = $this->validator->getData();
+        $returnData = [];
 
         // Create the user
         $workerLead = WorkerLead::firstOrCreate(
             ['email' => $validData['email']],
             $validData
         );
+        $returnData['worker_lead'] = $workerLead;
 
         if(isset($validData["document"]))
         {
             $createDocAction = new CreateDocument($validData["document"]);
             $document = $createDocAction->execute($workerLead);
+            $returnData['document'] = $document;
         }
 
         if(isset($validData["location"]))
         {
             $createLocationAction = new CreateLocation($validData["location"]);
             $location = $createLocationAction->execute($workerLead);
+            $returnData['location'] = $location;
         }
 
-        return [
-            "worker_lead" => $workerLead, 
-            "document" => $document,
-            "location" => $location
-        ];
+        return ["Testing"];
     }
 
 }

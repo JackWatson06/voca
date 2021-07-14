@@ -3,6 +3,7 @@
 namespace App\Actions\Location;
 
 use App\Actions\ModelExecutable;
+use App\Models\Location;
 use App\Validators\Location\CreateLocationValidator;
 
 use Illuminate\Database\Eloquent\Model;
@@ -46,13 +47,15 @@ class CreateLocation implements ModelExecutable
     {
         $validated = $this->validator->getData();
 
-        $location = $model->location()->create(
+        $location = Location::firstOrCreate(
             [
-                'city' => $validated['city'],
-                'state' => $validated['state'],
-            ],
-            $validated
+                'city'  => $validated['city'],
+                'state' => $validated['state']
+            ]
         );
+
+        $model->location_id = $location->id;
+        $model->save();
 
         return $location;
     }

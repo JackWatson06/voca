@@ -11,6 +11,6 @@ class ReadWorkerLeads implements Executable
     public function execute()
     {
         // Filter can at some point be done with filtering service ... maybe just use Largos code
-        return WorkerLead::with("documents", "locations")->get();
+        return WorkerLead::with("documents", "location")->get();
     }
 }
