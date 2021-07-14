@@ -15,3 +15,7 @@
     <p>Company Size: {{ $employer['company_lead']->size ?? "Not Specified" }}</p>
     <p>Additional Notes: {{ $employer['company_lead']->info ?? "Not Specified" }}</p>
 @endisset
+
+@isset($employer['location'])
+    <p>Location: {{ $employer['location']->city }}, {{ $employer['location']->state }}</p>
+@endisset

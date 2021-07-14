@@ -3,9 +3,7 @@ version: '3'
 networks:
   laravel:
 
-
 services:
-
 
   web:
     image: nginx

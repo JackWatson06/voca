@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersFnameAndLnameColumns extends Migration
 {
-
+    /**
+     * Migrate the current table up so that we can split the fname, and the lname
+     *
+     * @return void
+     */
     public function up()
     {
 
@@ -29,8 +33,6 @@ class CreateUsersFnameAndLnameColumns extends Migration
             $table->dropColumn('name');
         });
     }
-    
-
 
     /**
      * Split the name into a fname, and a lname.
@@ -61,8 +63,11 @@ class CreateUsersFnameAndLnameColumns extends Migration
         }
     }
 
-
-
+    /**
+     * Remove the fname, and lname replace with just the regular name
+     *
+     * @return void
+     */
     public function down()
     {
         // Re-instate the documents table columns
@@ -81,8 +86,6 @@ class CreateUsersFnameAndLnameColumns extends Migration
         });
     }
     
-
-
     /**
      * Combine the fname, and the lname into a single name
      *

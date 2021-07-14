@@ -2,13 +2,17 @@
 
 use App\Facades\Constant;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateCompanyLeadsTable extends Migration
 {
-
-    
+    /**
+     * Migrate the company leads up
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('company_leads', function (Blueprint $table) {
@@ -29,8 +33,6 @@ class CreateCompanyLeadsTable extends Migration
 
         $this->dataUp();
     }
-
-
 
     /**
      * Migrate the data from the companies users, documents, and companies table into the company_leads table
@@ -81,16 +83,17 @@ class CreateCompanyLeadsTable extends Migration
         }
     }
 
-
-
+    /**
+     * Migrate the company leads table down.
+     *
+     * @return void
+     */
     public function down()
     {
         $this->dataDown();        
 
         Schema::dropIfExists('company_leads');
     }
-
-
 
     /**
      * Reverse the data migration

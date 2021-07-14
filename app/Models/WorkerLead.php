@@ -25,8 +25,6 @@ class WorkerLead extends Model
         'info'
     ];
 
-
-
     /**
      * A user can be an employee at many different places
      *
@@ -35,6 +33,16 @@ class WorkerLead extends Model
     public function documents()
     {
         return $this->morphMany(Document::class, 'documentable');
+    }
+
+    /**
+     * A user can be an employee at many different places
+     *
+     * @return void
+     */
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 
 }

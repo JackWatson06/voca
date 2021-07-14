@@ -23,6 +23,7 @@ class CreateWorkerLeadValidator extends Validator
                 'trade'     => 'nullable|max:255',
                 'info'      => 'nullable',
                 'document'  => new SubValidator("Document\\CreateDocumentValidator"),
+                'location'  => new SubValidator("Location\\CreateLocationValidator"),
         ];
     }
 

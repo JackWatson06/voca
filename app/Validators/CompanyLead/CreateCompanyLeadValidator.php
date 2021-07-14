@@ -3,6 +3,7 @@
 namespace App\Validators\CompanyLead;
 
 use App\Validators\Validator;
+use App\Validators\SubValidator;
 
 class CreateCompanyLeadValidator extends Validator
 {
@@ -18,6 +19,7 @@ class CreateCompanyLeadValidator extends Validator
             'industry'     => 'required|max:255',
             'size'         => 'nullable|numeric',
             'info'         => 'nullable',
+            'location'  => new SubValidator("Location\\CreateLocationValidator"),
         ];
     }
 }
